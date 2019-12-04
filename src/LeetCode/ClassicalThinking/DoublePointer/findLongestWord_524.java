@@ -28,10 +28,11 @@ import java.util.List;
 public class findLongestWord_524 {
     public static void main(String[] args) {
         List<String> d = new ArrayList<String>();
-        d.add("apple");
-        d.add("sdsds");
-        d.add("erdfdd");
-        System.out.println(find("applesss",d));
+        d.add("ba");
+        d.add("ab");
+        d.add("a");
+        d.add("b");
+        System.out.println(find("bab",d));
     }
     public static String find(String s ,List<String> d){
         String longestString = "";
@@ -39,7 +40,7 @@ public class findLongestWord_524 {
             int LenL = longestString.length();
             int LenT = target.length();
             int comrst = longestString.compareTo(target);
-            if(LenL > LenT  || LenL == LenT  && comrst < 0){
+            if(LenL > LenT  || LenL == LenT  && comrst < 0){  //注意：此处不应为!= 0 ，注意题意中，返回长度最长，在字典顺序中考前的单词；
                 continue;
             }
             if(isSubStr(s,target)){
