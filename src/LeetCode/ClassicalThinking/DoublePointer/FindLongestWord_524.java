@@ -25,7 +25,7 @@ import java.util.List;
  * 所有输入的字符串长度不会超过 1000。
  *
  */
-public class findLongestWord_524 {
+public class FindLongestWord_524 {
     public static void main(String[] args) {
         List<String> d = new ArrayList<String>();
         d.add("ba");

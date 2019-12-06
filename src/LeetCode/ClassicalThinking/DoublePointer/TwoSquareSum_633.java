@@ -15,7 +15,7 @@ package LeetCode.ClassicalThinking.DoublePointer;
  * 输出: False
  *
  */
-public class twoSquareSum_633 {
+public class TwoSquareSum_633 {
     public static void main(String[] args) {
         System.out.println(judgeSquareSum(3));
     }

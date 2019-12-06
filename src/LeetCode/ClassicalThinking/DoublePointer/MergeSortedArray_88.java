@@ -17,7 +17,7 @@ package LeetCode.ClassicalThinking.DoublePointer;
  * 输出: [1,2,2,3,5,6]
  *
  */
-public class mergeSortedArray_88 {
+public class MergeSortedArray_88 {
     public static void main(String[] args) {
         int[] mergeRst = merge(new int[]{1,2,3,0,0,0},3,new int[]{2,5,6},3);
         for (int i = 0; i < mergeRst.length; i++) {

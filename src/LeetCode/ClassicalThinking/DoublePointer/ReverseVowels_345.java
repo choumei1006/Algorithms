@@ -19,7 +19,7 @@ import java.util.HashSet;
  * 元音字母不包含字母"y"。
  *
  */
-public class reverseVowels_345 {
+public class ReverseVowels_345 {
     private final static HashSet<Character> VowelsList = new HashSet<Character>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
     public static void main(String[] args) {
         System.out.println(reverseVowels("hello"));

@@ -21,7 +21,7 @@ import java.util.Map;
  * 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
  *
  */
-public class twoSum2_167 {
+public class TwoSum2_167 {
     public static void main(String[] args) {
         int[] numbers = {2,7,11,15};
         int target = 9;

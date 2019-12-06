@@ -1,5 +1,7 @@
 package LeetCode.ClassicalThinking.DoublePointer;
 
+import PublicClasses.ListNode;
+
 /**
  * @author:choumei
  * @date:2019/12/3 22:13
@@ -31,7 +33,7 @@ package LeetCode.ClassicalThinking.DoublePointer;
  * 你能用 O(1)（即，常量）内存解决此问题吗？
  *
  */
-public class linkedListCycle_141 {
+public class LinkedListCycle_141 {
     public static void main(String[] args) {
         ListNode h1 = new ListNode(1);
         ListNode h2 = new ListNode(2);

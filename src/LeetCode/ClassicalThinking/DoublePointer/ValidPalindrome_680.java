@@ -19,7 +19,7 @@ package LeetCode.ClassicalThinking.DoublePointer;
  * 字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。
  *
  */
-public class validPalindrome_680 {
+public class ValidPalindrome_680 {
     public static void main(String[] args) {
         System.out.println(validPalindrome("abca"));
     }
