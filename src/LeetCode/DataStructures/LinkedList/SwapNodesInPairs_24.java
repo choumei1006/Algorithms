@@ -32,8 +32,6 @@ public class SwapNodesInPairs_24 {
             System.out.println(swapRst.val);
             swapRst = swapRst.next;
         }
-
-        System.out.println();
     }
 
     public static ListNode swapPairs(ListNode head){
