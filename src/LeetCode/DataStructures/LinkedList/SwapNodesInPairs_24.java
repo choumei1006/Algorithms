@@ -27,18 +27,45 @@ public class SwapNodesInPairs_24 {
         l_3.next = l_4;
         l_4.next = l_5;
 
-        ListNode swapRst = swapPairs(head);
+        ListNode swapRst = swapPairs2(head);
         while(null != swapRst){
             System.out.println(swapRst.val);
             swapRst = swapRst.next;
         }
     }
 
+    /**
+     * 递归
+     * @param head
+     * @return
+     */
     public static ListNode swapPairs(ListNode head){
         if(null == head || null == head.next) return head;
         ListNode next = head.next;
         head.next = swapPairs(head.next.next);
         next.next = head;
         return next;
+    }
+
+    /**
+     * 非递归
+     * @param head
+     * @return
+     */
+    public static ListNode swapPairs2(ListNode head){
+        ListNode newHead = new ListNode(-1);
+        newHead.next = head;
+        ListNode pre = newHead;
+        while(null != pre.next && null != pre.next.next){
+            ListNode n1 = pre.next;
+            ListNode n2 = pre.next.next;
+            ListNode next = n2.next;
+            n1.next = next;
+            n2.next = n1;
+            pre.next = n2;
+
+            pre = n1;
+        }
+        return newHead.next;
     }
 }
