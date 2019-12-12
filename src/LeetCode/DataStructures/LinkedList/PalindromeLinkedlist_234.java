@@ -54,12 +54,14 @@ public class PalindromeLinkedlist_234 {
                 cur.next = pre;
                 pre = cur;
                 cur = flagPoint;
-                if(null == fast.next){
+                if(null == fast.next)   //fast已经移动到链表最后一个节点
+                {
                     fast = null;
                 }else{
                     fast = fast.next.next;
-                    if(null == fast){
-                        cur = cur.next;
+                    if(null == fast)  //下一位不为空，下下一位为空，立即推->该链表为奇数位
+                    {
+                        cur = cur.next;  //跳过中间节点
                     }
                 }
             }
