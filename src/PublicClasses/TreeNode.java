@@ -23,8 +23,10 @@ public class TreeNode {
         if(list.length <= 1) return list[0];
         int i = 0,j = 1;
         while(j+1<list.length){
-            list[i].left = list[j];
-            list[i].right = list[j+1];
+            if(null != list[i]){
+                list[i].left = list[j];
+                list[i].right = list[j+1];
+            }
 
             i++;
             j+=2;
