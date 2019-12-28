@@ -62,7 +62,7 @@ public class BinaryTreePreorderTraversal_144 {
     public static void preorderTraversalRecurrence(TreeNode root){
         if(null == root) return ;
         result.add(root.val);
-        if(null != root.left)   preorderTraversalRecurrence(root.left);
-        if(null != root.right)  preorderTraversalRecurrence(root.right);
+        preorderTraversalRecurrence(root.left);
+        preorderTraversalRecurrence(root.right);
     }
 }

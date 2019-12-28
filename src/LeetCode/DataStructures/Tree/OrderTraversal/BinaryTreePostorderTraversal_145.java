@@ -35,6 +35,12 @@ public class BinaryTreePostorderTraversal_145 {
             System.out.print(i+"\t");
         }
     }
+
+    /**
+     * 方法二：非递归
+     * @param root
+     * @return
+     */
     public static List<Integer> postorderTraversal2(TreeNode root){
         List<Integer> result2 = new ArrayList<>();
         Stack<TreeNode> s = new Stack<>();
@@ -61,8 +67,8 @@ public class BinaryTreePostorderTraversal_145 {
     }
     public static void postorderTraversalCurrence(TreeNode root){
         if(null == root) return ;
-        if(null != root.left) postorderTraversalCurrence(root.left);
-        if(null != root.right) postorderTraversalCurrence(root.right);
+        postorderTraversalCurrence(root.left);
+        postorderTraversalCurrence(root.right);
         result.add(root.val);
     }
 }
