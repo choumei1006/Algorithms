@@ -44,8 +44,8 @@ public class BinaryTreePreorderTraversal_144 {
             TreeNode cur = stack.pop();
             if(null == cur) continue;
             result2.add(cur.val);
-            if(cur.right != null) stack.push(cur.right);
-            if(cur.left != null) stack.push(cur.left);
+             stack.push(cur.right);
+            stack.push(cur.left);
         }
         return result2;
     }
