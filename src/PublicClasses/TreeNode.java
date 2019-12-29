@@ -48,4 +48,11 @@ public class TreeNode {
         }
         return nodeList;
     }
+    public static void printTree(TreeNode root){
+        if(null != root){
+            System.out.println(root.val);
+            printTree(root.left);
+            printTree(root.right);
+        }
+    }
 }
