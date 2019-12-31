@@ -12,4 +12,14 @@ public class ListNode {
           val = x;
           next = null;
      }
+     public static ListNode initListByArray(int[] array){
+          ListNode head = new ListNode(-1);
+          ListNode idx = head;
+          for (int i = 0; i < array.length ; i++) {
+               ListNode cur = new ListNode(array[i]);
+               idx.next = cur;
+               idx = idx.next;
+          }
+          return head.next;
+     }
 }
