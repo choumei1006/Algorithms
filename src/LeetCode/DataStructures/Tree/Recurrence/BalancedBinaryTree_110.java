@@ -55,17 +55,25 @@ public class BalancedBinaryTree_110 {
         System.out.println(isBalanced(null));
     }
 
-    //纯递归，时间复杂度超过100%
+    /**
+     * 纯递归，时间复杂度超过100%
+     * @param root
+     * @return
+     */
     public static boolean isBalanced1(TreeNode root){
         if(null == root) return true;
-        return isBalanced(root.left) && isBalanced(root.right) && Math.abs(maxDepth1(root.left)-maxDepth1(root.right)) <=1;
+        return isBalanced1(root.left) && isBalanced1(root.right) && Math.abs(maxDepth1(root.left)-maxDepth1(root.right)) <=1;
     }
     public static int maxDepth1(TreeNode root){
         if(null == root) return 0;
         return Math.max(maxDepth1(root.left),maxDepth1(root.right))+1;
     }
 
-    //考虑空间利用率
+    /**
+     * 考虑空间利用率
+     * @param root
+     * @return
+     */
     public static boolean isBalanced(TreeNode root){
         findMaxDepth(root);
         return result;

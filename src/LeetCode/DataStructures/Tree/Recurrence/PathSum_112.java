@@ -46,8 +46,8 @@ public class PathSum_112 {
         System.out.println(hasPathSum(l1_1,22));
     }
     public static boolean hasPathSum(TreeNode root,int sum){
-        if(null == root) return false;
-        if( null == root.left && null == root.right){
+        if(null == root) return false;  //边界条件1：sum还没递减结束
+        if( null == root.left && null == root.right){   //边界条件2：到叶子节点：左右子节点均为null，此时sum可能为负
             return root.val == sum ? true : false;
         }
         return hasPathSum(root.left,sum-root.val) || hasPathSum(root.right,sum-root.val);

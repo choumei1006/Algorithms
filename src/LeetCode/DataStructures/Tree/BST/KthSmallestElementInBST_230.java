@@ -46,7 +46,7 @@ public class KthSmallestElementInBST_230 {
     }
 
     /**
-     * 方法一：中序遍历
+     * 方法一：递归-中序遍历
      * @param root
      * @param k
      * @return
@@ -67,7 +67,7 @@ public class KthSmallestElementInBST_230 {
     }
 
     /**
-     * 中序遍历
+     * 方法二：非递归-中序遍历
      * @param root
      * @param k
      * @return
