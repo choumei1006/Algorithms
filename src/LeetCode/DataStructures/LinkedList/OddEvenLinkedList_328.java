@@ -24,22 +24,28 @@ import PublicClasses.ListNode;
  */
 public class OddEvenLinkedList_328 {
     public static void main(String[] args) {
-        ListNode h2 = new ListNode(2);
-        ListNode h3 = new ListNode(3);
-        ListNode h4 = new ListNode(4);
-        ListNode h5 = new ListNode(5);
+        int[] list = {1,2,3,4,5};
+        ListNode head = ListNode.initListByArray(list);
+        ListNode rstList = oddEvenList2(head);
+        ListNode.printListNode(rstList);
+    }
 
-        ListNode head = new ListNode(1);
-        head.next = h2;
-        h2.next = h3;
-        h3.next = h4;
-        h4.next = h5;
-
-        ListNode rstList = oddEvenList(head);
-        while(null != rstList){
-            System.out.println(rstList.val);
-            rstList = rstList.next;
+    /**
+     * 方法二：精简逻辑：先分别链接奇偶链表，最后衔接奇链表末尾与偶链表头
+     * @param head
+     * @return
+     */
+    public static ListNode oddEvenList2(ListNode head){
+        if(null == head || null == head.next) return head;
+        ListNode odd = head,even = head.next,headEven = even;
+        while(null != even && null != even.next){
+            odd.next= odd.next.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
         }
+        odd.next = headEven;
+        return head;
     }
     public static ListNode oddEvenList(ListNode head){
         if(null == head || null == head.next) return head;

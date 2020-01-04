@@ -12,6 +12,12 @@ public class ListNode {
           val = x;
           next = null;
      }
+
+    /**
+     * 初始化一个链表
+     * @param array：整型数组
+     * @return
+     */
      public static ListNode initListByArray(int[] array){
           ListNode head = new ListNode(-1);
           ListNode idx = head;
@@ -21,5 +27,16 @@ public class ListNode {
                idx = idx.next;
           }
           return head.next;
+     }
+
+    /**
+     * 顺次输出链表所有节点值
+     * @param head
+     */
+     public static void printListNode(ListNode head){
+         while(null != head){
+             System.out.println(head.val);
+             head = head.next;
+         }
      }
 }
