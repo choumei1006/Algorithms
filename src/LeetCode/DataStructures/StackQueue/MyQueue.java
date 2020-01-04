@@ -13,6 +13,10 @@ import java.util.Stack;
  *  * int param_2 = obj.pop();
  *  * int param_3 = obj.peek();
  *  * boolean param_4 = obj.empty();
+ *  做法：利用in、out两个栈实现：
+ *  入队：in栈入栈；
+ *  出队：若out栈不为空，出栈；
+ *        若out栈为空，将in栈元素逐个出栈并入out栈，保证先入in栈的元素先出out栈；
  *  *
  */
 class MyQueue {
