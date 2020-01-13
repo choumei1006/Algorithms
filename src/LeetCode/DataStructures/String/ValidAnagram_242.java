@@ -28,7 +28,7 @@ public class ValidAnagram_242 {
     }
 
     /**
-     * 方法一：数组存储字符出现的次数
+     * 方法一：数组存储字符出现的次数,S和t相互制衡
      * @param s
      * @param t
      * @return
@@ -48,6 +48,13 @@ public class ValidAnagram_242 {
         }
         return true;
     }
+
+    /**
+     * HashMap存储数组中字符的出现次数，两次遍历相互制衡
+     * @param s
+     * @param t
+     * @return
+     */
     public static boolean isAnagram2(String s,String t){
         HashMap<Character,Integer> map = new HashMap<>();
         for(char temp : s.toCharArray()){

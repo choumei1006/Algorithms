@@ -2,6 +2,7 @@ package GotoOffer;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Stack;
 
 /**
  * @author:choumei
@@ -28,6 +29,7 @@ public class DuplicateNumberInArray {
         int[] result = new int[1];
         System.out.println(duplicate(array,7,result));
         System.out.println(result[0]);
+        Stack<String> s = new Stack<>();
     }
 
     public static boolean duplicate(int[] numbers,int length,int[] duplication){
