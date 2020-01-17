@@ -53,7 +53,7 @@ public class IsomorphicString_205 {
     }
 
     /**
-     * 方法一：将两个字符串映射为一个第三方字符模板，检验改模板是否相同
+     * 方法一：将两个字符串映射为一个第三方字符模板，检验该模板是否相同
      * @param str
      * @return
      */
@@ -68,6 +68,21 @@ public class IsomorphicString_205 {
             result.append(map.get(tempChar));
         }
         return result.toString();
+    }
+    //repeat
+    public static String getModeOfStr_repeat(String str){
+        //创建HashMap存储（字符-模式字母）映射表
+        HashMap<Character,Character> map = new HashMap<>();
+        //创建StringBuilder模式串
+        StringBuilder sb = new StringBuilder();
+        //定义模式字符的index：模式串取'A'+index的Unicode值
+        int index = 0;
+        //循环字符串每个字符，插入或寻找模式字母，添加到模式串
+        for(char tempChar : str.toCharArray()){
+            map.putIfAbsent(tempChar,(char)('A'+index++));
+            sb.append(map.get(tempChar));
+        }
+        return sb.toString();
     }
 
     /**
@@ -84,6 +99,23 @@ public class IsomorphicString_205 {
             if(map.keySet().contains(charArr1[i])){
                 if(map.get(charArr1[i]) != charArr2[i]){
                     return  false;
+                }
+            }else{
+                map.put(charArr1[i],charArr2[i]);
+            }
+        }
+        return true;
+    }
+    public static boolean isIsomorphicHelper_repeat(String str1,String str2){
+        //创建str1和str2的映射HashMap
+        HashMap<Character,Character> map = new HashMap<>();
+        //循环遍历str1和str2的字符数组
+        char[] charArr1 = str1.toCharArray();
+        char[] charArr2 = str2.toCharArray();
+        for(int i = 0 ;i < str1.length();i++){
+            if (map.keySet().contains(charArr1[i])){
+                if(map.get(charArr1[i]) != charArr2[i]){
+                    return false;
                 }
             }else{
                 map.put(charArr1[i],charArr2[i]);
