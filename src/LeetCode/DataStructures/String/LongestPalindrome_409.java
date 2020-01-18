@@ -52,4 +52,21 @@ public class LongestPalindrome_409 {
         }
         return longestLen += (longestLen == s.length() ? 0 : 1);
     }
+
+    //review
+    public int longestPalindrome_repeat(String s){
+        int longestLen = 0;   //最长回文串长度
+        HashMap<Character,Integer> map = new HashMap<>();    //<字符，出现的次数>
+        //遍历字符串所有字符
+        for(char tempChar : s.toCharArray()){
+            map.put(tempChar,map.getOrDefault(tempChar,0)+1);
+        }
+        //遍历map表
+        for(char tempChar : map.keySet()){
+            if(map.get(tempChar) / 2 > 0){
+                longestLen += (map.get(tempChar)/2)*2;
+            }
+        }
+        return longestLen;
+    }
 }
