@@ -67,6 +67,6 @@ public class LongestPalindrome_409 {
                 longestLen += (map.get(tempChar)/2)*2;
             }
         }
-        return longestLen;
+        return longestLen += (longestLen == s.length() ? 0 :1);
     }
 }
