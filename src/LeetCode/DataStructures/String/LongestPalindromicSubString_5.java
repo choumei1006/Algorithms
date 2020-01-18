@@ -47,4 +47,32 @@ public class LongestPalindromicSubString_5 {
         }
         return end-start-1;     // = ((end-1)-(start+1))+1   = (end-1-start-1)+1  = end-start-1
     }
+
+    //review
+    public static String longestPalindrome_repeat(String s){
+        //判空
+        if(null == s || s.length() <= 0){
+            return s;
+        }
+        int longestLen = 0;
+        int start = 0,end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int tempLen1 = expendedPalindromeLen(s,i,i);
+            int tempLen2 = expendedPalindromeLen(s,i,i+1);
+            int tempMaxLen = Math.max(tempLen1,tempLen2);
+            if(tempMaxLen > longestLen){
+                longestLen = tempMaxLen;
+                start = i-(tempMaxLen-1)/2;
+                end = i+tempMaxLen/2;
+            }
+        }
+        return s.substring(start,end+1);
+    }
+    public static int expendedPalindromeLen(String s,int start,int end){
+        while(start >= 0 && end < s.length() && (s.charAt(start) == s.charAt(end))){
+            start--;
+            end++;
+        }
+        return end-start-1;
+    }
 }
