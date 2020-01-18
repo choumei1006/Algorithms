@@ -70,7 +70,4 @@ public class ValidAnagram_242 {
         }
         return true;
     }
-
-
-
 }
