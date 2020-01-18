@@ -42,4 +42,20 @@ public class PalindromeNumber_9 {
         }
         return x == right || x == (right/10);
     }
+    //review
+    public static boolean isPanlindrome(int x){
+        if(x == 0){
+            return true;
+        }
+        if(x < 0 || x % 10 == 0){
+            return false;
+        }
+        int   rightNumber = 0;
+        while(x > rightNumber){
+            rightNumber = rightNumber*10 + (x%10);
+            x /=  10;
+        }
+        return x == rightNumber || x == (rightNumber/10);
+
+    }
 }
