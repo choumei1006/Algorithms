@@ -54,4 +54,21 @@ public class PalindromicSubStrings_647 {
             total++;
         }
     }
+
+    public static int total_repeat = 0;
+    //review
+    public static int getPalindromeCnt(String s){
+        for (int i = 0; i < s.length() ; i++) {
+            expendedPalindrome(s,i,i);
+            expendedPalindrome(s,i,i+1);
+        }
+        return total_repeat;
+    }
+    public static void expendedPalindrome(String s,int start,int end){
+        while(start >= 0 && end < s.length() && (s.charAt(start) == s.charAt(end))){
+            total_repeat++;
+            start--;
+            end++;
+        }
+    }
 }
