@@ -17,7 +17,7 @@ import java.util.Arrays;
  * 尽量减少操作次数。
  *
  */
-public class MoveZeroes {
+public class MoveZeroes_283 {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(moveZeroes(new int[]{0,1,0,3,12})));
     }
@@ -25,9 +25,7 @@ public class MoveZeroes {
         int eZeroIndex = 0;
         for (int i = 0; i < nums.length ; i++) {
             if(nums[i] != 0){
-                if(i != eZeroIndex){
-                    nums[eZeroIndex++] = nums[i];
-                }
+                nums[eZeroIndex++] = nums[i];
             }
         }
         while (eZeroIndex < nums.length) {
