@@ -34,7 +34,6 @@ public class TreeNode {
                 list[i].left = list[j];
                 list[i].right = list[j+1];
             }
-
             i++;
             j+=2;
         }
