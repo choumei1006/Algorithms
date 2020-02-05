@@ -1,4 +1,6 @@
-package LeetCode.ClassicalThinking.Dp;
+package Demo;
+
+import java.util.Queue;
 
 /**
  * @author:choumei
@@ -13,6 +15,7 @@ public class KnapsackProblem_01 {
 
         int m = 4;          //背包总容量
         int n = val.length;    //商品数量
+
 
         int[][] v = new int[n+1][m+1];    //v[i][j]表示背包中放入前i个物品时的商品最大总价值
 
