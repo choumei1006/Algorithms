@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author:choumei
  * @date:2020/2/5 22:33
- * @Description: 数组实现队列
+ * @Description: 数组模拟队列
  */
 public class ArrayQueueDemo {
     public static void main(String[] args) {
@@ -102,6 +102,7 @@ class ArrayQueue{
         //判断是否队满
         if(isFull()){
             System.out.println("队列已满，不能再添加数据！");
+            return ;
         }
         rear++;
         arr[rear] = num;
