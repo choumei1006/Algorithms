@@ -49,9 +49,37 @@ import java.util.Map;
  */
 public class MinSteps_5333 {
     public static void main(String[] args) {
-        System.out.println(minSteps("friend","family"));
+        System.out.println(minSteps2("friend","family"));
     }
-    public static int minSteps(String s, String t) {
+
+    /**
+     * 方法二：
+     * @param s
+     * @param t
+     * @return
+     */
+    public static int minSteps2(String s,String t){
+        int[] counts = new int[26];
+        for (int i = 0; i < s.length() ; i++) {
+            int sChar = s.charAt(i),tChar = t.charAt(i);
+            counts[sChar-'a']++;
+            counts[tChar-'a']--;
+        }
+        int steps = 0;
+        for (int i = 0; i < counts.length ; i++) {
+            if(counts[i] > 0){
+                steps += counts[i];
+            }
+        }
+        return steps;
+    }
+    /**
+     * 方法一：
+     * @param s
+     * @param t
+     * @return
+     */
+    public static int minSteps1(String s, String t) {
         Map<Character,Integer> sMap = new HashMap<>();
         for (int i = 0; i < s.length() ; i++) {
             char tempChar = s.charAt(i);
