@@ -33,9 +33,12 @@ public class SingleLinkedListDemo {
 
         System.out.println("删除倒数第2个节点之后的链表：");
         singleLinkedList.show();
+
+        System.out.println("反转后的链表");
+        SingleLinkedList singleLinkedList2 = new SingleLinkedList();
+        singleLinkedList2.add(singleLinkedList.reverse());
+        singleLinkedList2.show();
     }
-
-
 }
 
 class SingleLinkedList{
@@ -73,7 +76,6 @@ class SingleLinkedList{
         }
         tempNode.name = newNode.name;
         tempNode.nickName = newNode.nickName;
-
     }
 
     /**
@@ -161,6 +163,28 @@ class SingleLinkedList{
         }
         i.next = i.next.next;
     }
+
+    /**
+     * 反转链表
+     */
+    public HeroNode reverse(){
+        HeroNode newHead = new HeroNode(0,"","");
+        HeroNode idx = head.next;
+        while(null != idx ){
+            HeroNode tempNext = idx.next;
+
+            idx.next = newHead.next;
+            newHead.next = idx;
+
+
+            idx = tempNext;
+        }
+        return newHead.next;
+    }
+
+
+
+
 }
 class HeroNode{
     public int no;
