@@ -2,6 +2,8 @@ package LeetCode.DataStructures.Tree.Recurrence;
 
 import PublicClasses.TreeNode;
 
+import java.util.HashMap;
+
 /**
  * @author:choumei
  * @date:2019/12/22 20:02
@@ -38,13 +40,14 @@ import PublicClasses.TreeNode;
  *   / \
  *  1   2
  * 返回 false。
- *
+ *{8,8,7,9,2,#,#,#,#,4,7},{8,9,2}
  */
 public class SubtreeOfAnotherTree_572 {
     public static void main(String[] args) {
-        TreeNode s = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{3,4,5,1,null,2}));
-        TreeNode t = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{3,1,2}));
+        TreeNode s = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{8,8,7,9,2,null,null,null,null,4,7}));
+        TreeNode t = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{8,9,2}));
         System.out.println(isSubtree(s,t));
+        System.out.println(HasSubtree(s,t));
     }
 
     /**
@@ -74,5 +77,30 @@ public class SubtreeOfAnotherTree_572 {
         }
         if(s.val != t.val) return false;
         return isSametree(s.left,t.left) && isSametree(s.right,t.right);
+    }
+
+    /**
+     * 拓展：判断root2是否时root1的子结构，非子树
+     * @param root1
+     * @param root2
+     * @return
+     */
+    public static  boolean HasSubtree(TreeNode root1,TreeNode root2) {
+        if(null == root1 || null == root2){
+            return false;
+        }
+        return IsSameTree(root1,root2) || HasSubtree(root1.right,root2) || HasSubtree(root1.left,root2);
+
+    }
+    public static  boolean IsSameTree(TreeNode root1,TreeNode root2){
+        if(null == root2){
+            return true;
+        }
+        if(null == root1){
+            return false;
+        }
+
+        return root1.val == root2.val && IsSameTree(root1.left,root2.left) && IsSameTree(root1.right,root2.right);
+
     }
 }

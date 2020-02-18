@@ -26,16 +26,17 @@ public class RemoveNthFromEnd_19 {
         ListNode l_3 = new ListNode(3);
         ListNode l_4 = new ListNode(4);
         ListNode l_5 = new ListNode(5);
-        ListNode l_6 = new ListNode(6);
+        //ListNode l_6 = new ListNode(6);
 
         ListNode head = new ListNode(1);
         head.next = l_2;
         l_2.next = l_3;
         l_3.next = l_4;
         l_4.next = l_5;
-        l_5.next = l_6;
+        //l_5.next = l_6;
 
-        ListNode rmRst = removeNthFromEnd(head,5);
+        //ListNode rmRst = removeNthFromEnd(head,5);
+        ListNode rmRst = FindKthToTail(head,5);
         while(null != rmRst){
             System.out.println(rmRst.val);
             rmRst = rmRst.next;
@@ -63,6 +64,25 @@ public class RemoveNthFromEnd_19 {
         }
         j.next = j.next.next;
         return head;
+    }
+    public static ListNode FindKthToTail(ListNode head,int k) {
+        if(null == head){
+            return null;
+        }
+        ListNode i = head,j = head;
+        while(k>1 && null != j.next){
+            j = j.next;
+            k--;
+        }
+        if(k>1){
+            return null;
+        }
+        while(null != j){
+            i = i.next;
+            j = j.next;
+        }
+        return i;
+
     }
 
 
