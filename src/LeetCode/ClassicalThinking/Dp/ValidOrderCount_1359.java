@@ -33,7 +33,7 @@ package LeetCode.ClassicalThinking.Dp;
  *
  * 1 <= n <= 500
  */
-public class ValidOrderCount_5326 {
+public class ValidOrderCount_1359 {
     public static void main(String[] args) {
         System.out.println(countOrders(18));
     }

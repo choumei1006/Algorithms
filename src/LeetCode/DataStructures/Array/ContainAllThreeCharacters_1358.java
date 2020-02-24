@@ -30,9 +30,9 @@ package LeetCode.DataStructures.Array;
  * 3 <= s.length <= 5 x 10^4
  * s 只包含字符 a，b 和 c 。
  */
-public class ContainAllThreeCharacters_5325 {
+public class ContainAllThreeCharacters_1358 {
     public static void main(String[] args) {
-        System.out.println(numberOfSubstrings("aaaabc"));
+        System.out.println(numberOfSubstrings("aaaabcc"));
     }
     public static int numberOfSubstrings(String s) {
         int n=s.length();

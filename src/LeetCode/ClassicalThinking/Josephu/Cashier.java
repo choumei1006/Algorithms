@@ -16,16 +16,12 @@ public class Cashier {
     int currIdx = 0;
     int n;  //打折频率
     int discount;  //折扣
-    int[] products;
-    int[] prices;
     HashMap<Integer,Integer> map;
 
     public Cashier(int n, int discount, int[] products, int[] prices) {
         this.currIdx = 0;
         this.n = n;
         this.discount = discount;
-        this.products = products;
-        this.prices = prices;
         this.map = new HashMap<>();
         for(int i = 0;i < products.length;i++){
             map.put(products[i],prices[i]);

@@ -81,7 +81,7 @@ package LeetCode.ClassicalThinking.Josephu;
  * [[77],[488]],[[77],[111]],[[77],[860]],[[77],[352]],[[77],[193]],[[77],[922]],[[77],[859]],[[77],[865]],
  * [[77],[113]],[[77],[370]],[[77],[966]],[[77],[694]],[[77],[432]],[[77],[549]],[[77],[909]]]
  */
-public class ApplyDiscount_5324 {
+public class ApplyDiscount_1357 {
     public static void main(String[] args) {
         Cashier cashier = new Cashier(192,34,new int[]{77},new int[]{302});
         System.out.println(cashier.getBill(new int[]{77},new int[]{343}));                        // 返回 500.0, 账单金额为 = 1 * 100 + 2 * 200 = 500.
