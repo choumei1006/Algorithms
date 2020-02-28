@@ -1,5 +1,6 @@
 package LeetCode.DataStructures.StackQueue;
 
+import java.util.HashMap;
 import java.util.Stack;
 
 /**
@@ -36,8 +37,20 @@ import java.util.Stack;
  *
  */
 public class ValidParentheses_20 {
+    public static  HashMap<Character,Character> map;
+    public ValidParentheses_20() {
+        map = new HashMap<Character, Character>();
+        map.put(')','(');
+        map.put(']','[');
+        map.put('}','{');
+    }
+
     public static void main(String[] args) {
-        System.out.println(isValid("()"));
+        map = new HashMap<Character, Character>();
+        map.put(')','(');
+        map.put(']','[');
+        map.put('}','{');
+        System.out.println(isValid2("()"));
     }
     public static boolean isValid(String s){
          Stack<Character> stk = new Stack<>();
@@ -56,4 +69,29 @@ public class ValidParentheses_20 {
          }
          return stk.isEmpty();
     }
+
+    /**
+     * 方法2
+     * @param s
+     * @return
+     */
+    public static boolean isValid2(String s){
+         if(null == s || s.length() == 0){
+             return true;
+         }
+         Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(map.get(c) != null){   //闭括号
+                char tempPeek = stack.isEmpty() ? '#' : stack.pop() ;
+                if(map.get(c) != tempPeek){
+                    return false;
+                }
+            }else{
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
+    }
+
 }
