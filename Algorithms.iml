@@ -16,10 +16,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../Jar/junit-4.10.jar!/" />
+          <root url="jar://D:/Tools/Java/jar/JUnit/junit-4.10.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
