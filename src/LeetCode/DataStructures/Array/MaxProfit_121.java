@@ -32,7 +32,7 @@ public class MaxProfit_121 {
             for (int j = i + 1; j < prices.length; j++) {
                 int profit = prices[j] - prices[i];
                 if (profit > maxprofit)
-                    maxprofit = profit;
+                    maxprofit  = profit;
             }
         }
         return maxprofit;
