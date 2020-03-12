@@ -36,6 +36,7 @@ public class MaxProfit_121 {
             }
         }
         return maxprofit;
+
     }
     public static int maxProfit2(int prices[]) {
         int minprice = Integer.MAX_VALUE;
