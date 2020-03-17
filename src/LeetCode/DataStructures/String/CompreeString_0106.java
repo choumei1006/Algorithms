@@ -46,6 +46,7 @@ public class CompreeString_0106 {
                 preLen = 1;
                 sb.append(currChar);
                 preChar = currChar;
+
             }
         }
         sb.append(preLen);
