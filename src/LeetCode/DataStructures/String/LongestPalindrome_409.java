@@ -27,10 +27,16 @@ import java.util.Map.Entry;
  */
 public class LongestPalindrome_409 {
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("abccccdd"));
+        System.out.println(longestPalindrome2("abccccdd"));
 
     }
-    public static int longestPalindrome(String s){
+
+    /**
+     * 方法一：
+     * @param s
+     * @return
+     */
+    public static int longestPalindrome1(String s){
         int longestLen = 0;
         char[] charArr = s.toCharArray();
         HashMap<Character,Integer> map = new HashMap<>();
@@ -68,5 +74,23 @@ public class LongestPalindrome_409 {
             }
         }
         return longestLen += (longestLen == s.length() ? 0 :1);
+    }
+
+    /**
+     * 方法二：
+     * @param s
+     * @return
+     */
+    public static int longestPalindrome2(String s){
+        int[] count = new int[128];
+        char[] sArray = s.toCharArray();
+        for(char c : sArray){
+            count[c]++;
+        }
+        int oddLen = 0;
+        for(int temp : count){
+            oddLen+=temp%2;
+        }
+        return oddLen == 0 ? s.length() : s.length()-oddLen+1;
     }
 }
