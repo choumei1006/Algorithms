@@ -1,4 +1,4 @@
-package LeetCode.ClassicalThinking.BFS;
+package LeetCode.ClassicalThinking.GCD;
 
 import org.junit.Test;
 
