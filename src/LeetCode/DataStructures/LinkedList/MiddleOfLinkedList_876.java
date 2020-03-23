@@ -2,6 +2,17 @@ package LeetCode.DataStructures.LinkedList;
 
 import PublicClasses.ListNode;
 
+/**
+ * @author:choumei
+ * @date:2020/3/24 23:40
+ * @Description:
+ * /**
+ *  * Your Cashier object will be instantiated and called as such:
+ *  * Cashier obj = new Cashier(n, discount, products, prices);
+ *  * double param_1 = obj.getBill(product,amount);
+ *
+ */
+
 public class MiddleOfLinkedList_876 {
     public static void main(String[] args) {
         System.out.println(middleNode(ListNode.initListByArray(new int[]{1,2,3})).val);
