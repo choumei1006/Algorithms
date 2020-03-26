@@ -1,4 +1,4 @@
-package LeetCode.ClassicalThinking.BackTrack;
+package LeetCode.ClassicalThinking.DFS;
 
 import org.junit.Test;
 
