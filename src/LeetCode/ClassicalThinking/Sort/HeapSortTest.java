@@ -1,4 +1,4 @@
-package LeetCode.ClassicalThinking.Order;
+package LeetCode.ClassicalThinking.Sort;
 
 import java.util.Arrays;
 
