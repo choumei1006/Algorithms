@@ -13,10 +13,7 @@ import java.util.Arrays;
 public class MergeSortTest {
     @Test
     public void test(){
-        System.out.println(Arrays.toString(mergeSortHelper(new int[]{5,2,3,1})));
-    }
-    public void mergeSort(int[] arr){
-        mergeSortHelper(arr);
+        System.out.println(Arrays.toString(mergeSort(new int[]{5,2,3,1},0,4)));
     }
     public int[] mergeSortHelper(int[] arr){
         if(null == arr){
@@ -55,4 +52,36 @@ public class MergeSortTest {
         }
         return res;
     }
+
+    //自测
+    public int[] mergeSort(int[] nums, int i, int j){
+        if(null == nums || nums.length == 0){
+            return null;
+        }
+        if(j - i == 1){
+            return new int[]{nums[i]};
+        }
+        int midIdx = (j + i) / 2;
+        int[] leftSortedArr = mergeSort(nums,i,midIdx);
+        int[] rightSortedArr = mergeSort(nums,midIdx,j);
+
+        int leftLen = leftSortedArr.length;
+        int rightLen = rightSortedArr.length;
+        int leftPoint = leftLen-1,rightPoint = rightLen-1;
+        int[] res = new int[j-i];
+        int resPoint = j-i-1;
+        while(leftPoint >= 0 || rightPoint >= 0){
+            int curLeft = leftPoint < 0 ? Integer.MIN_VALUE : leftSortedArr[leftPoint];
+            int curRight = rightPoint < 0 ? Integer.MIN_VALUE : rightSortedArr[rightPoint];
+            if(curLeft > curRight){
+                res[resPoint--] = curLeft;
+                leftPoint--;
+            }else{
+                res[resPoint--] = curRight;
+                rightPoint--;
+            }
+        }
+        return res;
+    }
+
 }
