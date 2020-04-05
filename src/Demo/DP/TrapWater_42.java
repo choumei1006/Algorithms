@@ -82,4 +82,19 @@ public class TrapWater_42 {
         return res;
     }
 
+    /**
+     * 方法三：双指针
+     * @param height
+     * @return
+     */
+    public int trap3(int[] height){
+        if(null == height || height.length == 0){
+            return 0;
+        }
+        int leftPoint = 1;
+        int rightPoint = height.length-2;
+        return  0;
+
+    }
+
 }
