@@ -95,6 +95,7 @@ public class TrapWater_42 {
         int rightPoint = height.length-2;
         return  0;
 
+
     }
 
 }
