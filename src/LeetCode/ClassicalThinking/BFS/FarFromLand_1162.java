@@ -38,12 +38,13 @@ import java.util.Queue;
  *
  * 1 <= grid.length == grid[0].length <= 100
  * grid[i][j] 不是 0 就是 1
+ * 参考：https://leetcode-cn.com/problems/as-far-from-land-as-possible/solution/jian-dan-java-miao-dong-tu-de-bfs-by-sweetiee/
  *
  */
 public class FarFromLand_1162 {
     @Test
     public void test(){
-        System.out.println(maxDistance(new int[][]{{1,0,0},{0,0,0},{0,0,0}}));
+        System.out.println(maxDistance1(new int[][]{{1,0,0},{0,0,0},{0,0,0}}));
     }
 
     /**
@@ -51,7 +52,7 @@ public class FarFromLand_1162 {
      * @param grid
      * @return
      */
-    public int maxDistance(int[][] grid){
+    public int maxDistance1(int[][] grid){
         if(null == grid || grid.length == 0){
             return -1;
         }
@@ -93,5 +94,46 @@ public class FarFromLand_1162 {
             return -1;
         }
         return grid[point[0]][point[1]] - 1;
+    }
+
+    /**
+     * 自测
+     * @param grid
+     * @return
+     */
+    public int maxDistance2(int[][] grid){
+        int m = grid.length;
+        int n = grid[0].length;
+
+        int[][] dir = {{0,1},{1,0},{0,-1},{-1,0}};
+
+        Queue<int[]> queue = new  LinkedList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if(grid[i][j] == 1){
+                    queue.offer(new int[]{i,j});
+                }
+            }
+        }
+
+        int[] tempPos = null;
+        int newx,newy;
+        boolean hasOcean = false;
+        while(!queue.isEmpty()){
+            tempPos = queue.poll();
+            for(int[] d : dir){
+                newx = tempPos[0] + d[0];
+                newy = tempPos[1] + d[1];
+                if(newx < 0 || newx > m || newy < 0 || newy > n || grid[newx][newy] != 0){
+                    continue;
+                }
+                grid[newx][newy] = grid[tempPos[0]][tempPos[1]]+1;
+                hasOcean = true;
+            }
+        }
+        if(!hasOcean || null == tempPos){
+            return -1;
+        }
+        return grid[tempPos[0]][tempPos[1]]-1;
     }
 }
