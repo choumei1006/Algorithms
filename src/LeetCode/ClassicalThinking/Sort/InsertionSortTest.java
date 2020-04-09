@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * @author:choumei
  * @date:2020/3/21 18:26
- * @Description: 插入排序
+ * @Description:  插入排序 O(n^2)
  */
 public class InsertionSortTest {
     @Test

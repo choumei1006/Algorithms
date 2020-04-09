@@ -63,6 +63,7 @@ public class HeapSortTest {
     public static void heap_build(int[] tree, int n){
         int lastNode = n-1;
         int lastParent = (lastNode - 1) / 2;
+        //自底向上调整：保证最大的换到堆顶
         for(int i = lastParent; i >= 0; i--){
             heapify(tree,n,i);
         }
@@ -79,4 +80,6 @@ public class HeapSortTest {
             heapify(tree,i,0);
         }
     }
+
+
 }

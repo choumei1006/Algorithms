@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class QuickSortTest {
     @Test
     public void test(){
-        System.out.println(Arrays.toString(quickSort(new int[]{10,9,8,7,6,5,4,3,2,1,0})));
+        System.out.println(Arrays.toString(quickSort2(new int[]{10,9,8,7,6,5,4,3,2,1,0})));
     }
     public int[] quickSort(int[] arr){
         if(null == arr){
@@ -68,6 +68,37 @@ public class QuickSortTest {
     }
 
     public int getBeginPos(int[] arr, int low, int high){
+        int key = arr[low];
+        while(low < high){
+            while(low < high && arr[high] >= key){
+                high--;
+            }
+            arr[low] = arr[high];
+            while(low < high && arr[low] <= key){
+                low++;
+            }
+            arr[high] = arr[low];
+        }
+        arr[low] = key;
+        return low;
+    }
+
+    //自测2020-04-09
+    public int[] quickSort2(int[] arr){
+        if(null == arr){
+            return null;
+        }
+        quickSortHelper(arr,0,arr.length-1);
+        return arr;
+    }
+    public void quickSortHelper(int[] arr, int low, int high){
+        if(low < high){
+            int pos = getPos2(arr,low,high);
+            quickHelper(arr,0,pos-1);
+            quickHelper(arr,pos+1,high);
+        }
+    }
+    public int getPos2(int[] arr, int low, int high){
         int key = arr[low];
         while(low < high){
             while(low < high && arr[high] >= key){
