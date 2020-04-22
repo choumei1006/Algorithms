@@ -9,7 +9,9 @@ import java.util.List;
 /**
  * @author:choumei
  * @date:2020/4/18 13:35
- * @Description: 给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+ * @Description: 给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。
+ * 在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。
+ * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
  *
  * 说明：你不能倾斜容器，且 n 的值至少为 2。
  *
@@ -30,8 +32,8 @@ import java.util.List;
 public class ContainerWithMostWater_11 {
     @Test
     public void test(){
-        //System.out.println(maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
-        List<String> list = new ArrayList<>();
+        System.out.println(maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
+        /*List<String> list = new ArrayList<>();
         list.add("d");
         list.add("b");
         list.add("e");
@@ -45,7 +47,7 @@ public class ContainerWithMostWater_11 {
         list2.add("b");
         list2.add("e");
         list2.stream().sorted((o1,o2) -> o1.compareTo(o2));
-        System.out.println(list2.toString());
+        System.out.println(list2.toString());*/
 
     }
     public int maxArea(int[] height){

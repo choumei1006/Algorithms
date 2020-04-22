@@ -49,6 +49,11 @@ public class LinkedListCycle_141 {
         System.out.println(hasCycle(h1));
     }
 
+    /**
+     * 追击问题
+     * @param head
+     * @return
+     */
     public static boolean hasCycle(ListNode head){
         if(null == head) return false;
         ListNode l1 = head;

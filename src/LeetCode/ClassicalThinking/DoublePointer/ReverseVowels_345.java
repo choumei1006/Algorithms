@@ -41,7 +41,6 @@ public class ReverseVowels_345 {
                 curList[l++] = rChar;
                 curList[r--] = lChar;
             }
-
         }
         return new String(curList);
 

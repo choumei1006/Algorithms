@@ -12,6 +12,13 @@ public class LargestAvgOfSubarray {
     public void test(){
         System.out.println(FindMaxAverage(new int[]{1,2,3,4,5},3));
     }
+
+    /**
+     * 滑动窗口
+     * @param nums
+     * @param k
+     * @return
+     */
     public double FindMaxAverage(int[] nums, int k){
         if(null == nums || k > nums.length){
             return 0.0d;
