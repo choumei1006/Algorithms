@@ -1,4 +1,4 @@
-package LeetCode.DataStructures.Array;
+package LeetCode.ClassicalThinking.BFS;
 
 import org.junit.Test;
 
