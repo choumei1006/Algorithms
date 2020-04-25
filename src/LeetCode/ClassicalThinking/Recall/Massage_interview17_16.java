@@ -1,4 +1,4 @@
-package LeetCode.ClassicalThinking.Dp;
+package LeetCode.ClassicalThinking.Recall;
 
 import org.junit.Test;
 
