@@ -3,7 +3,7 @@ package PublicClasses;
 /**
  * @author:choumei
  * @date:2019/12/3 22:14
- * @Description: Definition for single-linked list.
+ * @Description: Definition for single-linked list.  [单链表节点]
  */
 public class ListNode {
      public int val;
