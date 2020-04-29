@@ -1,5 +1,9 @@
 package LeetCode.DataStructures.Array;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * @author:choumei
  * @date:2020/4/28 23:02
@@ -23,7 +27,47 @@ package LeetCode.DataStructures.Array;
  *
  */
 public class SingleNumbers {
-    public int[] singleNumbers(int[] nums) {
+    @Test
+    public void test(){
+        System.out.println(Arrays.toString(singleNumbers(new int[]{1,2,3,4,4,2})));
+    }
+
+    /**
+     * 位运算：返回数组中仅有的两个出现一次的元素
+     * @param nums
+     * @return
+     */
+    public int[] singleNumbers(int[] nums){
+        if(null == nums || nums.length == 0){
+            return null;
+        }
+        int[] res = new int[2];   //结果集
+        int sum = 0;
+
+        //获取目标元素（2个）的异或结果
+        for (int i = 0; i < nums.length; i++) {
+            sum ^= nums[i];
+        }
+
+        //获取一个异或结果的不为零的位索引
+        int temp = 1;
+        while((sum & temp) == 0){
+            temp <<= 1;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if((nums[i] & temp) == 0){
+                res[0] ^= nums[i];
+            }else{
+                res[1] ^= nums[i];
+            }
+        }
+        return res;
+    }
+
+
+
+    public int[] singleNumbers2(int[] nums) {
         int sum=0;
         //将数组所有元素进行异或，最后的结果一定是那两个单一数字的异或结果。看上图示例
         //用示例[4,4,6,1]最后的抑或结果就是 6和1异或的结果 7
