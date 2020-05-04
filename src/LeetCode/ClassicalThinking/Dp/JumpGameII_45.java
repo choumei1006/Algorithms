@@ -25,11 +25,13 @@ import org.junit.Test;
 public class JumpGameII_45 {
     @Test
     public void test(){
-        System.out.println(jump1(new int[]{2,3,1,1,4}));
+        System.out.println(jump2(new int[]{2,3,1,1,4}));
     }
 
     /**
      * 方法一：反向查找出发位置
+     * 时间复杂度：O（n^2）
+     * 空间复杂度：O（1）
      * @param nums
      * @return
      */
@@ -47,6 +49,31 @@ public class JumpGameII_45 {
                     tempObj = i;
                     break;
                 }
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 方法二：正向查找可到达的最大位置
+     * 时间复杂度：O（n）
+     * 空间复杂度：O（1）
+     * @param nums
+     * @return
+     */
+    public int jump2(int[] nums){
+        if(null == nums || nums.length == 0){
+            return 0;
+        }
+        int res = 0;
+        int len = nums.length;
+        int tempEnd = 0;
+        int maxPosition = 0;
+        for (int i = 0; i < len - 1; i++) {
+            maxPosition = Math.max(maxPosition, nums[i] + i);
+            if(i == tempEnd){
+                tempEnd = maxPosition;
+                res ++;
             }
         }
         return res;
