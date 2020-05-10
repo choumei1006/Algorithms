@@ -53,4 +53,22 @@ public class LowestCommonAncesterOfBinaryTree_236 {
         return null == leftRst ? rightRst : null == rightRst ? leftRst : root;
     }
 
+    //自测
+
+    /**
+     * 返回root二叉树中的p,q节点的最近公共祖先
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    public static TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q){
+        if(null == root || root.val == p.val || root.val == q.val){
+            return root;
+        }
+        TreeNode leftRst = lowestCommonAncestor2(root.left, p, q);
+        TreeNode rightRst = lowestCommonAncestor2(root.right, p, q);
+        return null == leftRst ? rightRst : null == rightRst ? leftRst : root;
+    }
+
 }
