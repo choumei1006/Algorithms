@@ -9,7 +9,8 @@ import java.util.List;
  * @date:2020/4/14 23:20
  * @Description:
  */
-public class FindSingleNums_2 {
+public class
+FindSingleNums_2 {
     public static void main(String[] args) {
         List<Integer> rst = findSingleNums(new int[]{1,1,2,3});
         for(int num : rst){
