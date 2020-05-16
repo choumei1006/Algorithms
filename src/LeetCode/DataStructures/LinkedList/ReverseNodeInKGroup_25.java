@@ -1,6 +1,7 @@
 package LeetCode.DataStructures.LinkedList;
 
 import PublicClasses.ListNode;
+import org.junit.Test;
 
 /**
  * @author:choumei
@@ -71,5 +72,56 @@ public class ReverseNodeInKGroup_25 {
         l.next = l.next.next;
         r.next.next = temp2;
         return r.next;
+    }
+
+    /**
+     * 自测
+     */
+    @Test
+    public void test(){
+        ListNode head = ListNode.initListByArray(new int[]{1,2,3,4,5});
+        ListNode.printListNode(reverseKGroup(head,3));
+    }
+
+    public ListNode reversKGroup2(ListNode head, int k){
+        if(null == head){
+            return null;
+        }
+        ListNode newHead = new ListNode(-1);  //标识新链表的表头
+        newHead.next = head;
+        ListNode l = newHead, r = newHead;   //左右指针，用来标识K子数组的头尾
+        int cnt = 0;
+        while(null != r){
+            if(cnt == k){
+                r = reverseHelper2(l, r);
+                l = r;
+                cnt = 0;
+            }
+            l = l.next;
+            cnt++;
+        }
+        return newHead.next;
+    }
+
+    /**
+     * 反转[l.next,r]子链表，返回反转后的子链表的表尾
+     * @param l
+     * @param r
+     * @return
+     */
+    public ListNode reverseHelper2(ListNode l, ListNode r){
+        //待反转子链表长度为0；
+        if(l.next == r){
+            return r;
+        }
+        //反转[l.next.next,r]子链表
+        r = reverseHelper2(l.next, r);
+        ListNode tailNext = r.next;
+        r.next = l.next;
+        l.next = l.next.next;
+        r.next.next = tailNext;
+
+        return r.next;
+
     }
 }
