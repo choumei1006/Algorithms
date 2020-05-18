@@ -1,4 +1,4 @@
-package LeetCode.DataStructures.Array;
+package LeetCode.ClassicalThinking.Dp;
 
 import org.junit.Test;
 

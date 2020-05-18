@@ -24,7 +24,7 @@ import org.junit.Test;
 public class SubarrayWithLargestProduct_152 {
     @Test
     public void test(){
-        System.out.println(maxProduct(new int[]{2,3,-2,4,-2}));
+        System.out.println(maxProduct2(new int[]{2,3,-2,4,-2}));
     }
 
     /**
@@ -50,6 +50,30 @@ public class SubarrayWithLargestProduct_152 {
             max = Math.max(max,imax);
         }
         return max;
+    }
 
+    /**
+     * 自测
+     * @param nums
+     * @return
+     */
+    public int maxProduct2(int[] nums){
+        //特判
+        if(null == nums || nums.length == 0){
+            return 0;
+        }
+        int resMax = Integer.MIN_VALUE;
+        int tmpMax = 1, tmpMin = 1;
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] < 0){
+                int temp = tmpMax;
+                tmpMax = tmpMin;
+                tmpMin = temp;
+            }
+            tmpMax = Math.max(tmpMax * nums[i], nums[i]);
+            tmpMin = Math.min(tmpMin * nums[i], nums[i]);
+            resMax = Math.max(tmpMax, resMax);
+        }
+        return resMax;
     }
 }

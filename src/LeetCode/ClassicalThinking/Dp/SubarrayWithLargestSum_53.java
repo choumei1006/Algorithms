@@ -36,7 +36,7 @@ import org.junit.Test;
 public class SubarrayWithLargestSum_53 {
     @Test
     public void test(){
-        System.out.println(getLargestSum(new int[]{1,2,-2,4}));
+        System.out.println(getLargestSum2(new int[]{1,2,-2,4}));
     }
 
     /**
@@ -55,5 +55,23 @@ public class SubarrayWithLargestSum_53 {
             max = Math.max(max,dp);
         }
         return max;
+    }
+
+    /**
+     * 自测
+     * @param nums
+     * @return
+     */
+    public int getLargestSum2(int[] nums){
+        if(null == nums || nums.length == 0){
+            return 0;
+        }
+        int resMax = nums[0];
+        int tmpMax = nums[0];
+        for (int i = 1; i < nums.length; i++) {   //注意：其实索引是1
+            tmpMax = Math.max(tmpMax + nums[i], nums[i]);
+            resMax = Math.max(resMax, tmpMax);
+        }
+        return resMax;
     }
 }
