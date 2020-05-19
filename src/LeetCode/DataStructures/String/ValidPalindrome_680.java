@@ -1,4 +1,4 @@
-package LeetCode.ClassicalThinking.DoublePointer;
+package LeetCode.DataStructures.String;
 
 import org.junit.Test;
 
