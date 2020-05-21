@@ -1,9 +1,12 @@
 package LeetCode.DataStructures.String;
 
+import org.junit.Test;
+
 /**
  * @author:choumei
  * @date:2020/1/13 23:22
- * @Description: 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+ * @Description: 【最长回文子串】
+ * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
  *
  * 示例 1：
  *
@@ -74,5 +77,49 @@ public class LongestPalindromicSubString_5 {
             end++;
         }
         return end-start-1;
+    }
+
+    /**
+     * 自测 2020-05-21
+     */
+    @Test
+    public void test(){
+        System.out.println(longestPalindrome2("babad"));
+    }
+
+    public String longestPalindrome2(String s){
+        if(null == s || s.length() == 0){
+            return null;
+        }
+        int maxExp1 = 0, maxExp2 = 0;
+        int tmpMaxLen = 0, maxLen = 0;
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            maxExp1 = expandHelper(s, i, i);   //以当前字符为中心左右扩展的回文串长度
+            maxExp2 = expandHelper(s, i, i + 1);   //以当前字符右侧间隙为中心左右扩展的回文串长度
+            tmpMaxLen = Math.max(maxExp1, maxExp2);
+            if(tmpMaxLen > maxLen){
+                start = i - (tmpMaxLen - 1) / 2;
+                end = i + tmpMaxLen / 2;
+                maxLen = tmpMaxLen;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    /**
+     * 以[start,end]为中心左右扩展，找到以该中心为轴的最长回文串长度
+     * @param s
+     * @param start
+     * @param end
+     * @return
+     */
+    public int expandHelper(String s, int start, int end){
+        while(start >= 0 && end < s.length() && (s.charAt(start) == s.charAt(end))){
+            start --;
+            end ++;
+        }
+        return end - start - 1;
     }
 }
