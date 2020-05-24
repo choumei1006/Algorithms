@@ -5,7 +5,8 @@ import org.junit.Test;
 /**
  * @author:choumei
  * @date:2020/4/17 13:47
- * @Description: 给定一个非负整数数组，你最初位于数组的第一个位置。
+ * @Description: 【跳跃游戏】
+ * 给定一个非负整数数组，你最初位于数组的第一个位置。
  *
  * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
  *
@@ -28,6 +29,12 @@ public class CanJump_55 {
     public void test(){
         System.out.println(canJump(new int[]{3,2,1,0,4}));
     }
+
+    /**
+     * 贪心算法：
+     * @param nums
+     * @return
+     */
     public boolean canJump(int[] nums){
         if(null == nums || nums.length == 0){
             return false;
@@ -40,6 +47,31 @@ public class CanJump_55 {
                 if(rightFast >= len){
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 自测2020-05-23
+     * @param nums
+     * @return
+     */
+    public boolean canJump2(int[] nums){
+        if(null == nums || nums.length == 0){
+            return false;
+        }
+        int rightIdx = 0;
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            if(i <= rightIdx){
+                rightIdx = Math.max(i + nums[i], rightIdx);  //更新右边界
+
+                if(rightIdx >= len - 1){
+                    return true;
+                }
+            }else{
+                return false;
             }
         }
         return false;

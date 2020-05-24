@@ -1,5 +1,7 @@
 package LeetCode.DataStructures.Array;
 
+import org.junit.Test;
+
 /**
  * @author:choumei
  * @date:2019/11/2123:36
@@ -34,6 +36,34 @@ public class medianOfSortedArrays_4 {
         }
 
         return sumLen%2 == 0 ? (medianStr[lastMedianIndex-2]+medianStr[lastMedianIndex-1])/2.0: medianStr[lastMedianIndex-1];
+    }
 
+    /**
+     * 自测
+     */
+    @Test
+    public void test(){
+        System.out.println(medianOfSortedArrays(new int[]{1,2}, new int[]{3,4}));
+    }
+    public double medianOfSortedArrays2(int[] nums1, int[] nums2){
+        if(null == nums1 || null == nums2){
+            throw new IllegalArgumentException("参数数组为空！");
+        }
+        int len = nums1.length + nums2.length;
+        int medianIdx = len / 2;
+        int[] resArr = new int[medianIdx + 1];  //为了照顾偶数长度
+        int idx1 = 0, idx2 = 0, resIdx = 0;
+
+        //按序存放medianIdx + 1个元素,   !!!注意！！！idx要++
+        for (int i = 0; i < resArr.length; i++) {
+            if(idx1 < nums1.length && idx2 < nums2.length){
+                resArr[resIdx++] = nums1[idx1] < nums2[idx2] ? nums1[idx1++] : nums2[idx2++];
+            }else if(idx1 < nums1.length){
+                resArr[resIdx++] = nums1[idx1++];
+            }else{
+                resArr[resIdx++] = nums2[idx2++];
+            }
+        }
+        return len % 2 == 0 ? (resArr[medianIdx - 1] + resArr[medianIdx]) / 2 : resArr[medianIdx];
     }
 }
