@@ -52,6 +52,8 @@ public class SubArraySumEqualsK_560 {
 
     /**
      * 方法二：前缀和+哈希表
+     * ( preSum[j] - preSum[i - 1] ) == K
+     * ( preSum[j] - K ) == preSum[i - 1]
      * @param nums
      * @param k
      * @return
