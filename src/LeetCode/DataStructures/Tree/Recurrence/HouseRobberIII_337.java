@@ -1,6 +1,7 @@
 package LeetCode.DataStructures.Tree.Recurrence;
 
 import PublicClasses.TreeNode;
+import org.junit.Test;
 
 import java.util.HashMap;
 
@@ -134,6 +135,48 @@ public class HouseRobberIII_337 {
             return Math.max(temp_left + temp_right, root.val + temp_left_left + temp_left_right + temp_right_left + temp_right_right);
         }
         return root.val + temp_left + temp_right;
+    }
+
+
+    /**
+     * 自测
+     */
+    @Test
+    public void test(){
+
+    }
+
+    /**
+     * 返回二叉树不相邻节点值之和的最大值
+     * @param root
+     * @return
+     */
+    public int rob5(TreeNode root){
+        int[] res = rob5Helper(root);   //获取root根节点偷与不偷的最大获利值
+        return Math.max(res[0], res[1]);
+    }
+
+    /**
+     * 获取一个二叉树根节点偷与不偷的最大获利值数组
+     * @param root
+     * @return
+     */
+    public int[] rob5Helper(TreeNode root){
+        //特判
+        if(null == root){
+            return new int[]{};
+        }
+        //获取左右子树计算结果数组
+        int[] leftRes = rob5Helper(root.left);
+        int[] rightRes = rob5Helper(root.right);
+
+        int[] res = new int[2];
+        //父节点不取时，左右子树可取可不取
+        res[0] = Math.max(leftRes[0], leftRes[1]) + Math.max(rightRes[0], rightRes[1]);
+        //父节点取时，左右子树不可取
+        res[1] = root.val + leftRes[0] + rightRes[0];
+
+        return res;
     }
 
 

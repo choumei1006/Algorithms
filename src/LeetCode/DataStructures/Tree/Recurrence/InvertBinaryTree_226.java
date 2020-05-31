@@ -1,6 +1,7 @@
 package LeetCode.DataStructures.Tree.Recurrence;
 
 import PublicClasses.TreeNode;
+import org.junit.Test;
 
 /**
  * @author:choumei
@@ -59,6 +60,27 @@ public class InvertBinaryTree_226 {
             printTree(root.left);
             printTree(root.right);
         }
+    }
+
+    @Test
+    public void test(){
+        TreeNode root = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{4,2,7,1,3,6,9}));
+        TreeNode.printTree(invertTree2(root));
+    }
+
+    /**
+     * 左右翻转二叉树
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree2(TreeNode root){
+        if(null == root){
+            return root;
+        }
+        TreeNode leftInvert = invertTree2(root.left);
+        root.left = invertTree2(root.right);
+        root.right = leftInvert;
+        return root;
     }
 
 

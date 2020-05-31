@@ -1,6 +1,7 @@
 package LeetCode.DataStructures.Tree.Recurrence;
 
 import PublicClasses.TreeNode;
+import org.junit.Test;
 
 /**
  * @author:choumei
@@ -84,6 +85,72 @@ public class BalancedBinaryTree_110 {
         int rLen = findMaxDepth(root.right);
         if(Math.abs(lLen-rLen) > 1) result = false;
         return Math.max(lLen,rLen)+1;
+    }
+
+    /**
+     * 自测
+     */
+    @Test
+    public void test(){
+        TreeNode root = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{1,2,2,3,3,null,null,4,4}));
+        System.out.println(isBalanced3(root));
+    }
+
+    /**
+     * 判断一棵二叉树是否平衡
+     * @return
+     */
+    public boolean isBalanced2(TreeNode root){
+        if(null == root){
+            return true;
+        }
+        return isBalanced2(root.left) && isBalanced2(root.right) && (Math.abs(depthHelper1(root.left) - depthHelper1(root.right)) <= 1);
+    }
+
+    /**
+     * 返回树高度
+     * @param root
+     * @return
+     */
+    public int depthHelper1(TreeNode root){
+        if(null == root){
+            return 0;
+        }
+        int leftDepth = depthHelper1(root.left);
+        int rightDepth = depthHelper1(root.right);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    /**
+     * 自测2：非纯递归
+     * @param root
+     * @return
+     */
+    boolean isBalanced = true;
+    public boolean isBalanced3(TreeNode root){
+        calDepthHelper(root);
+        return isBalanced;
+    }
+
+    /**
+     * 计算二叉树高度，期间更新平衡标志
+     * @param root
+     * @return
+     */
+    public int calDepthHelper(TreeNode root){
+        if(null == root){
+            return 0;
+        }
+        //计算左右子树高度
+        int leftDepth = calDepthHelper(root.left);
+        int rightDepth = calDepthHelper(root.right);
+
+        //更新平衡标志
+        if(Math.abs(leftDepth - rightDepth) >= 1){
+            isBalanced = false;
+        }
+        //树高等于左右子树高度最大值 + 1
+        return Math.max(leftDepth, rightDepth) + 1;
     }
 
 }
