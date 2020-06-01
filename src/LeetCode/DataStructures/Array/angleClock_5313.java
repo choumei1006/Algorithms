@@ -1,9 +1,12 @@
 package LeetCode.DataStructures.Array;
 
+import org.junit.Test;
+
 /**
  * @author:choumei
  * @date:2020/2/8 23:13
- * @Description: 给你两个数 hour 和 minutes 。请你返回在时钟上，由给定时间的时针和分针组成的较小角的角度（60 单位制）。
+ * @Description: 给你两个数 hour 和 minutes 。
+ * 请你返回在时钟上，由给定时间的时针和分针组成的较小角的角度（60 单位制）。
  *
  *
  *
@@ -50,5 +53,30 @@ public class angleClock_5313 {
         double d2 = minutes*360.0/60.0;
         double angle = Math.abs(d2-d1);
         return Math.min(angle,360.0-angle);
+    }
+
+    //自测
+    @Test
+    public void test(){
+        System.out.println(angleClock2(12, 30));
+    }
+
+    /**
+     * 计算时针与分针之间的较小夹角角度
+     * @param hour
+     * @param minutes
+     * @return
+     */
+    public double angleClock2(int hour, int minutes){
+        //计算时针偏移
+        int stepH = (360 / 12) * (hour + minutes / 60);
+        //计算分针偏移
+        int stepM = (360 / 60) * minutes;
+
+        //计算夹角
+        double angle = Math.abs(stepH - stepM);
+
+        //返回较小夹角
+        return Math.min(angle, 360.0 - angle);
     }
 }

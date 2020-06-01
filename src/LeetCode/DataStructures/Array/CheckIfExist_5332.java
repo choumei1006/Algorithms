@@ -6,7 +6,8 @@ import java.util.Map;
 /**
  * @author:choumei
  * @date:2020/2/9 10:36
- * @Description: 给你一个整数数组 arr，请你检查是否存在两个整数 N 和 M，满足 N 是 M 的两倍（即，N = 2 * M）。
+ * @Description: 给你一个整数数组 arr，请你检查是否存在两个整数 N 和 M，
+ * 满足 N 是 M 的两倍（即，N = 2 * M）。
  *
  * 更正式地，检查是否存在两个下标 i 和 j 满足：
  *
@@ -48,9 +49,9 @@ public class CheckIfExist_5332 {
             if(null != tempRst){
                 return true;
             }
-            map.put(2*arr[i],i);
+            map.put(2*arr[i],i);  //存放2倍
             if(arr[i]%2 == 0) {
-                map.put(arr[i] / 2, i);
+                map.put(arr[i] / 2, i);   //存放1/2倍
             }
         }
         return false;

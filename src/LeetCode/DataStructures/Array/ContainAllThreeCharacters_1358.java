@@ -7,13 +7,15 @@ package LeetCode.DataStructures.Array;
  *
  * 请你返回 a，b 和 c 都 至少 出现过一次的子字符串数目。
  *
- *
- *
  * 示例 1：
  *
  * 输入：s = "abcabc"
  * 输出：10
- * 解释：包含 a，b 和 c 各至少一次的子字符串为 "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" 和 "abc" (相同字符串算多次)。
+ * 解释：包含 a，b 和 c 各至少一次的子字符串为
+ * "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" 和 "abc"
+ * (相同字符串算多次)。
+ *
+ *
  * 示例 2：
  *
  * 输入：s = "aaacb"
