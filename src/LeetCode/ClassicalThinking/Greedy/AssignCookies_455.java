@@ -1,5 +1,9 @@
 package LeetCode.ClassicalThinking.Greedy;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * @author:choumei
  * @date:2020/5/24 9:13
@@ -33,4 +37,33 @@ package LeetCode.ClassicalThinking.Greedy;
  *
  */
 public class AssignCookies_455 {
+    @Test
+    public void test(){
+        System.out.println(findContentChildren(new int[]{1,2}, new int[]{1,2,3}));
+    }
+
+    /**
+     * 方法一：贪心算法
+     * @param grid
+     * @param size
+     * @return
+     */
+    public int findContentChildren(int[] grid, int[] size){
+        //特判
+        if(null == grid || null == size){
+            return -1;
+        }
+
+        Arrays.sort(grid);   //胃口值排序
+        Arrays.sort(size);   //饼干大小排序
+
+        int gi = 0, si = 0;    //数组下标
+        while(gi < grid.length && si < size.length){
+            if(grid[gi] <= size[si]){
+                gi++;
+            }
+            si++;
+        }
+        return si;
+    }
 }
