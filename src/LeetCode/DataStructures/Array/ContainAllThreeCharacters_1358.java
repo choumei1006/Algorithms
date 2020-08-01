@@ -1,5 +1,7 @@
 package LeetCode.DataStructures.Array;
 
+import org.junit.Test;
+
 /**
  * @author:choumei
  * @date:2020/2/23 0:35
@@ -34,7 +36,7 @@ package LeetCode.DataStructures.Array;
  */
 public class ContainAllThreeCharacters_1358 {
     public static void main(String[] args) {
-        System.out.println(numberOfSubstrings("aaaabcc"));
+        System.out.println(numberOfSubstrings("abcabc"));
     }
     public static int numberOfSubstrings(String s) {
         int n=s.length();
@@ -60,5 +62,45 @@ public class ContainAllThreeCharacters_1358 {
                 Ans+=p+1;
             }
         return Ans;
+    }
+
+    @Test
+    public void test(){
+        System.out.println(numberOfSubstrings2("aaaabcc"));
+    }
+
+    /**
+     * 思路：逐一判断所有字符，rst + 其余两个字符最小索引 + 1
+     *
+     * @param s
+     * @return
+     */
+    public int numberOfSubstrings2(String s) {
+        //特判
+        if (null == s || s.length() == 0) {
+            return 0;
+        }
+
+        int rst = 0;   //结果
+        int aIdx = -1, bIdx = -1, cIdx = -1;
+
+        int sLen = s.length();
+
+        for (int i = 0; i < sLen; i++) {
+            if(s.charAt(i) == 'a'){
+                int lowRange = Math.min(bIdx, cIdx);
+                aIdx = i;
+                rst += lowRange + 1;
+            }else if(s.charAt(i) == 'b'){
+                int lowRange = Math.min(aIdx, cIdx);
+                bIdx = i;
+                rst += lowRange + 1;
+            }else if(s.charAt(i) == 'c'){
+                int lowRange = Math.min(aIdx, bIdx);
+                cIdx = i;
+                rst += lowRange + 1;
+            }
+        }
+        return rst;
     }
 }

@@ -1,7 +1,11 @@
 package LeetCode.DataStructures.Array;
 
+import org.junit.Test;
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author:choumei
@@ -52,6 +56,61 @@ public class CheckIfExist_5332 {
             map.put(2*arr[i],i);  //存放2倍
             if(arr[i]%2 == 0) {
                 map.put(arr[i] / 2, i);   //存放1/2倍
+            }
+        }
+        return false;
+    }
+
+    @Test
+    public void test(){
+        System.out.println(checkIfExist3(new int[]{1,2,4,5}));
+    }
+
+    /**
+     * 判断一个数组中是否存在 1：2关系
+     * 思路：遍历数组，将数组元素的 2、1/2倍元素存入目标数组中
+     * @param arr
+     * @return
+     */
+    public boolean checkIfExist2(int[] arr) {
+        //特判
+        if (null == arr || arr.length == 0) {
+            return false;
+        }
+
+        Map<Integer, Integer> targets = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            Integer tempTarget = targets.get(arr[i]);
+            //存在1：2关系
+            if(null != tempTarget){
+                return true;
+            }
+            targets.put(2 * arr[i], i);
+
+            if(arr[i] % 2 == 0){
+                targets.put(arr[i] / 2, i);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 改进3：将目标集合更换为 Set
+     * @param arr
+     * @return
+     */
+    public boolean checkIfExist3(int[] arr){
+        if(null == arr || arr.length == 0){
+            return false;
+        }
+        Set<Integer> targets = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            if(targets.contains(arr[i])){
+                return true;
+            }
+            targets.add(2 * arr[i]);
+            if(arr[i] % 2 == 0){
+                targets.add(arr[i] / 2);
             }
         }
         return false;

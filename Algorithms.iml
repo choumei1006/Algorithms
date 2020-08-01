@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/Tools/Java/jar/JUnit/junit-4.10.jar!/" />
+          <root url="jar://D:/Tools/Java/jar/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/Tools/Java/jar/commons-lang3-3.9-bin/commons-lang3-3.9/commons-lang3-3.9.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
