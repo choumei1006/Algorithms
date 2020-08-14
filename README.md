@@ -1,2 +1,2 @@
 # Algorithms
-Including LeetCode 、GotoOffer  and other  valuable  algorithms.
+Including leetCode 、gotoOffer  and other  valuable  algorithms.
