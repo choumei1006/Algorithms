@@ -1,5 +1,6 @@
 package leetCode.DataStructures.Tree.Recurrence;
 
+import org.junit.Test;
 import publicClasses.TreeNode;
 
 import java.util.LinkedList;
@@ -86,4 +87,40 @@ public class MergeTwoBineryTrees_617 {
             if(null != node.right) q.offer(node.right);
         }
     }
+
+    //=======================2020-08-22============================
+
+    @Test
+    public void test(){
+        TreeNode root1 = TreeNode.initTree2(TreeNode.initTreeNodeList(new Integer[]{1,2,3,4,5}));
+        TreeNode root2 = TreeNode.initTree2(TreeNode.initTreeNodeList(new Integer[]{1, 2, 3, null, null, 4, 5}));
+        TreeNode newRoot = mergeTrees3(root1, root2);
+        TreeNode.printTree(newRoot);
+        //TreeNode.printTree(mergeTrees3(root1,root2));
+    }
+
+    /**
+     * 合并两科二叉树【递归合并】
+     * @param root1
+     * @param root2
+     * @return
+     */
+    public TreeNode mergeTrees3(TreeNode root1, TreeNode root2 ){
+        //特判
+        if(null == root1 && null == root2){
+            return null;
+        }
+        if(null == root1 || null == root2){
+            return null == root1 ? root2 : root1;
+        }
+
+        //创建新树
+        TreeNode newRoot = new TreeNode(root1.val + root2.val);
+        newRoot.left = mergeTrees3(root1.left, root2.left);
+        newRoot.right = mergeTrees3(root1.right, root2.right);
+
+        return newRoot;
+    }
+
+
 }

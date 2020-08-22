@@ -1,4 +1,4 @@
-package leetCode.DataStructures.LinkedList;
+package leetCode.ClassicalThinking.DoublePointer;
 
 import publicClasses.ListNode;
 
@@ -44,7 +44,7 @@ public class RemoveNthFromEnd_19 {
     }
 
     /**
-     * 用i，j之间的长度测量距离
+     * 用i，j之间的长度测量距离 【快慢指针】
      * @param head
      * @param n
      * @return
@@ -55,7 +55,7 @@ public class RemoveNthFromEnd_19 {
             i = i.next;
         }
         if(null == i){
-            return head.next;
+            return head.next;   //删除第一个链表节点
         }
         ListNode j = head;
         while(i.next != null){
@@ -82,7 +82,44 @@ public class RemoveNthFromEnd_19 {
             j = j.next;
         }
         return i;
+    }
 
+    //======================================2020-08-15自测==============================
+
+    /**
+     * 删除倒数第n个元素
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        //特判
+        if (null == head ) {
+            return null;
+        }
+        //双指针
+        ListNode r = head;
+        int cnt = 0;
+        while(n-- > 0 && null != r){
+            r = r.next;
+            cnt++;
+        }
+
+        if(cnt < n){
+            return head;
+        }
+        else if(null == r){
+            return head.next;
+        }
+
+        ListNode l = head;
+        while(null != r){
+            l = l.next;
+            r = r.next;
+        }
+        l.next = l.next.next;
+        return head;
     }
 
 

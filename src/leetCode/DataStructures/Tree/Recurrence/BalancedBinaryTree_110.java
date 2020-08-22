@@ -153,4 +153,42 @@ public class BalancedBinaryTree_110 {
         return Math.max(leftDepth, rightDepth) + 1;
     }
 
+    //------------------------2020-08-22-----------------------
+    @Test
+    public void test2(){
+
+    }
+
+    /**
+     * 判断root根节点的二叉树是否平衡
+     *
+     * @param root
+     * @return
+     */
+    private boolean rst = true;
+    public boolean isBalanced4(TreeNode root) {
+        calDepthHelper2(root);
+        return rst;
+    }
+
+    /**
+     * 递归计算子树高度，期间判断并更新平衡标志
+     * @param root
+     * @return
+     */
+    public int  calDepthHelper2(TreeNode root){
+        //特判
+        if (null == root) {
+            return 0;
+        }
+        //递归判断
+        int dl = calDepthHelper2(root.left);
+        int dr = calDepthHelper2(root.right);
+
+        //更新结果
+        rst = Math.abs(dl - dr) >= 1;
+
+        return Math.max(dl, dr) + 1;
+    }
+
 }

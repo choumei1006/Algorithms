@@ -1,5 +1,6 @@
 package leetCode.DataStructures.Tree.Recurrence;
 
+import org.junit.Test;
 import publicClasses.TreeNode;
 
 /**
@@ -42,5 +43,25 @@ public class MaximumDepthOfBinaryTree_104 {
         }else{
             return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
         }
+    }
+
+    @Test
+    public void test(){
+
+    }
+
+    /**
+     * 返回当前根节点树高
+     *
+     * @param root
+     * @return
+     */
+    public int maxDepth2(TreeNode root) {
+        //特判
+        if (null == root) {
+            return 0;
+        }
+        //递归
+        return Math.max(maxDepth2(root.left), maxDepth2(root.right)) + 1;
     }
 }

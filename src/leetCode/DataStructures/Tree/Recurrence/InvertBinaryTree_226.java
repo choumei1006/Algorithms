@@ -83,5 +83,25 @@ public class InvertBinaryTree_226 {
         return root;
     }
 
+    //=========================2020-08-22===============================
+
+    /**
+     * 反转二叉树【递归】
+     *
+     * @param root
+     */
+    public TreeNode invertTree3(TreeNode root) {
+        //特判
+        if (null == root || (null == root.left && null == root.right)) {
+            return root;
+        }
+        //递归反转
+        TreeNode ivtLeft = invertTree3(root.left);
+        root.left = invertTree3(root.right);
+        root.right = ivtLeft;
+
+        return root;
+    }
+
 
 }

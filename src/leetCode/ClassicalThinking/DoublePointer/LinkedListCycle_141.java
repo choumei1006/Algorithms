@@ -1,5 +1,6 @@
 package leetCode.ClassicalThinking.DoublePointer;
 
+import org.junit.Test;
 import publicClasses.ListNode;
 
 /**
@@ -65,5 +66,37 @@ public class LinkedListCycle_141 {
         }
         return false;
 
+    }
+
+//    =========================================2020-08-15自测==================================
+
+    @Test
+    public void test(){
+
+    }
+
+
+    /**
+     * @param head
+     * @return
+     */
+    public boolean hasCycle2(ListNode head) {
+        //特判
+        if (null == head) {
+            return false;
+        }
+
+        //双指针
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while(null != fast && null != fast.next){
+            if(slow == fast){
+                return true;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return false;
     }
 }

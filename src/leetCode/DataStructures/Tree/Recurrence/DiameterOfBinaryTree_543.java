@@ -1,5 +1,6 @@
 package leetCode.DataStructures.Tree.Recurrence;
 
+import org.junit.Test;
 import publicClasses.TreeNode;
 
 /**
@@ -49,5 +50,47 @@ public class DiameterOfBinaryTree_543 {
         int maxr = maxDepth(root.right);
         maxPath = Math.max(maxPath,maxl+maxr);
         return Math.max(maxl,maxr)+1;
+    }
+
+    @Test
+    public void test(){
+        TreeNode root = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{1,2,3,4,5}));
+        System.out.println(diameterOfBinaryTree2(root));
+    }
+
+    /**
+     * 计算二叉树的直径:二叉树种任意两个节点之间的路径长度最大值
+     *
+     * @param root
+     * @return
+     */
+    private int maxDiameter = 0;
+    public int diameterOfBinaryTree2(TreeNode root) {
+        //特判
+        if (null == root) {
+            return 0;
+        }
+        calDepthHelper(root);
+        return maxDiameter;
+    }
+
+    /**
+     * 计算子树向上层贡献的最长单边 /路径/ 长度，期间更新最长直径
+     * @param root
+     * @return
+     */
+    public int calDepthHelper(TreeNode root){
+        //特判
+        if(null == root){
+            return 0;
+        }
+        //递归计算
+        int dl = calDepthHelper(root.left);
+        int dr = calDepthHelper(root.right);
+
+        //更新最长直径
+        maxDiameter = Math.max(maxDiameter, dl + dr);
+
+        return Math.max(dl, dr) + 1;
     }
 }
