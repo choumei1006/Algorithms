@@ -25,7 +25,7 @@ public class TreeNode {
      * @param list：组成二叉树的二叉树节点数组，按照欲求的二叉树结构层次排列
      * @return
      */
-    public static TreeNode initTree2(TreeNode[] list){
+    public static TreeNode initTree(TreeNode[] list){
         if(null == list) return null;
         if(list.length <= 1) return list[0];
         int i = 0,j = 1;
@@ -49,7 +49,7 @@ public class TreeNode {
      * @param list
      * @return
      */
-    public static TreeNode initTree(TreeNode[] list){
+    public static TreeNode initTree2(TreeNode[] list){
         if(null == list) return null;
         if(list.length <= 1) return list[0];
         int eChildCnt = list.length / 2;   //计算非叶子节点个数

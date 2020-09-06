@@ -1,5 +1,6 @@
 package leetCode.DataStructures.Tree.LevelFind;
 
+import org.junit.Test;
 import publicClasses.TreeNode;
 
 import java.util.LinkedList;
@@ -46,6 +47,11 @@ public class FindBottomLeftTreeValue_513 {
         Integer[] list = {1,2,3,4,null,5,6,null,null,null,null,7,null,null,null};
         TreeNode tree = TreeNode.initTree(TreeNode.initTreeNodeList(list));
         System.out.println(findBottomLeftValue(tree));
+    }
+    @Test
+    public void test(){
+        TreeNode root = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{1, 2, 3, 4, null, 5, 6, null, null, null, null, 7, null, null, null}));
+        System.out.println(findBottomLeftValue(root));
     }
     public static int findBottomLeftValue(TreeNode root){
         Queue<TreeNode> q = new LinkedList<>();

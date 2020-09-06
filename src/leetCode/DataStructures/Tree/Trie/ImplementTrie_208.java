@@ -21,7 +21,7 @@ package leetCode.DataStructures.Tree.Trie;
  * 保证所有输入均为非空字符串。
  *
  */
-public class ImplementTrie_208 {
+public class  ImplementTrie_208 {
     public static void main(String[] args) {
 
         Trie trie = new Trie();

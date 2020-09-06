@@ -57,6 +57,12 @@ public class LongestUnivaluePath_687 {
         dfs(root);
         return path;
     }
+
+    /**
+     * 返回向上贡献的路径长度（根节点值）
+     * @param root
+     * @return
+     */
     public static int dfs(TreeNode root){
         if(null == root) return 0;
         int tempLeft = dfs(root.left);

@@ -4,6 +4,8 @@ import publicClasses.TreeNode;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author:choumei
@@ -177,6 +179,121 @@ public class HouseRobberIII_337 {
         res[1] = root.val + leftRes[0] + rightRes[0];
 
         return res;
+    }
+
+
+
+
+
+    //=================================2020-08-23 自测====================================
+    @Test
+    public void test2(){
+        TreeNode root = TreeNode.initTree(TreeNode.initTreeNodeList(new Integer[]{3, 4, 5, 1, 3, null, 1}));
+        System.out.println(rob8(root));
+    }
+
+    /**
+     * 方法一：暴力递归
+     * 获取二叉树间隔节点最大值
+     * @param root
+     * @return
+     */
+    public int rob6(TreeNode root){
+        //特判
+        if(null == root){
+            return 0;
+        }
+
+        //根 + 孙
+        int max1 = root.val;
+        max1 += ( null != root.left ) ? rob6(root.left.left) + rob6(root.left.right) : 0;
+        max1 += ( null != root.right ) ? rob6(root.right.left) + rob6(root.right.right) : 0;
+
+        //子
+        int max2 = rob6(root.left) + rob6(root.right);
+
+        return Math.max(max1, max2);
+    }
+
+    /**
+     * 方法二：记忆法（解决重复子问题）
+     *
+     * @param root
+     * @return
+     */
+    public int rob7(TreeNode root) {
+        //存放中间结果
+        Map<TreeNode, Integer> memo = new HashMap<>();
+
+        return rob7Helper(root, memo);
+    }
+
+    /**
+     * 辅助类
+     *
+     * @param root
+     * @param memo
+     * @return
+     */
+    public int rob7Helper(TreeNode root, Map<TreeNode, Integer> memo) {
+        //特判
+        if (null == root) {
+            return 0;
+        }
+
+        //查看是否有缓存记忆
+        if(memo.containsKey(root)){
+            return memo.get(root);
+        }
+
+        //没有缓存记忆
+        int max1 = root.val;
+        max1 += (null != root.left ) ? rob7Helper(root.left.left, memo) + rob7Helper(root.left.right, memo) : 0;
+        max1 += (null != root.right ) ? rob7Helper(root.right.left, memo) + rob7Helper(root.right.right, memo) : 0;
+
+        int max2 = rob7Helper(root.left, memo) + rob7Helper(root.right, memo);
+
+        int rst = Math.max(max1, max2);
+        memo.put(root, rst);
+
+        return rst;
+    }
+
+    /**
+     * 方法三：递归二
+     * @param root
+     * @return
+     */
+    public int rob8(TreeNode root){
+        int[] rst = rob8Helper(root);
+        return Math.max(rst[0], rst[1]);
+    }
+
+    /**
+     * 辅助类
+     * 功能:获取子树根节点偷与不偷时的最大值
+     * 【0】：根节点不偷时最大值=左子树中的间隔偷最大值 + 右子树间隔偷的最大值（此时不管左右子树根节点是否偷）
+     * 【1】：根节点偷时最大值 = 左子树不偷时最大值 + 右子树不偷时最大值
+     *
+     * @param root
+     * @return
+     */
+    public int[] rob8Helper(TreeNode root) {
+        //特判
+        if (null == root) {
+            return new int[2];
+        }
+        //递归
+        int[] rst = new int[2];
+
+        //左右子树【偷-不偷】结果集
+        int[] leftRst = rob8Helper(root.left);
+        int[] rightRst = rob8Helper(root.right);
+
+        rst[0] = Math.max(leftRst[0], leftRst[1]) + Math.max(rightRst[0], rightRst[1]);
+        rst[1] = root.val + leftRst[0] + rightRst[0];
+
+        return rst;
     }
 
 

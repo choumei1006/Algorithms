@@ -82,6 +82,8 @@ public class FarFromLand_1162 {
             point = queue.poll();
             int curx = point[0];
             int cury = point[1];
+
+            //向四个方向延申一步，遇到陆地无操作，遇到海洋则将海洋置为上一步陆地+1，将海洋入队
             for (int i = 0; i < 4; i++) {
                 int newx = curx + dir[i][0];
                 int newy = cury + dir[i][1];

@@ -44,6 +44,17 @@ public class AssignCookies_455 {
 
     /**
      * 方法一：贪心算法
+     * 思路:从最小的小孩、最小的饼干开始分配，这样可以选择一种当前看起来最优的分配方案；
+     * Q:如何保证这样的贪心策略市全局最优的？
+     * A:反证法证明；假设存在一种分配策略不满足贪心当前最优，而且可以保证满足孩子数更多；
+     *  【证明】
+     *  假设在某次选择中，贪心策略选择给当前满足度最小的孩子分配第 m 个饼干，
+     *  第 m 个饼干为可以满足该孩子的最小饼干。
+     *  假设存在一种最优策略，可以给该孩子分配第 n 个饼干，并且 m < n。
+     *  我们可以发现，经过这一轮分配，贪心策略分配后剩下的饼干一定有一个比最优策略来得大。
+     *  因此在后续的分配中，贪心策略一定能满足更多的孩子。
+     *  也就是说不存在比贪心策略更优的策略，即贪心策略就是最优策略。
+     *
      * @param grid
      * @param size
      * @return
@@ -66,4 +77,34 @@ public class AssignCookies_455 {
         }
         return gi;
     }
+
+    /**
+     * 自测：贪心策略
+     *
+     * @param grid
+     * @param size
+     * @return
+     */
+    public int findContentChild2(int[] grid, int[] size) {
+        //特判
+        if (null == grid || null == size) {
+            return 0;
+        }
+
+        //1、将胃口值、饼干大小排序
+        Arrays.sort(grid);
+        Arrays.sort(size);
+        //2、升序遍历两个数组，逐个判断满足当前胃口的孩子的最小饼干
+        int cnt = 0;
+        int gi = 0, si = 0;
+        while (gi < grid.length && si < size.length) {
+            if(grid[gi] <= size[si]){
+                gi++;
+            }
+            si++;
+        }
+
+        return gi;
+    }
+
 }

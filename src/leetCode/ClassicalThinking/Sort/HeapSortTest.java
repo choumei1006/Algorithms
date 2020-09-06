@@ -21,7 +21,7 @@ public class HeapSortTest {
     /**
      * 对堆中的第i个节点进行调整
      * @param tree
-     * @param n
+     * @param n   n 不一定等于 tree.length(我们可能指向对堆中的局部范围进行调整)
      * @param i
      */
     public static void heapify(int[] tree, int n, int i ){
