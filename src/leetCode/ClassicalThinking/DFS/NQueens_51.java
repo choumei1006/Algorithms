@@ -70,8 +70,11 @@ public class NQueens_51 {
             if(!(isValid(board,rowIdx,col))){
                 continue;
             }
+            //处理
             board[rowIdx][col] = 1;
-            backTrack(board,rowIdx+1);
+            //回溯
+            backTrack(board, rowIdx + 1);
+            //撤销操作
             board[rowIdx][col] = 0;
         }
     }

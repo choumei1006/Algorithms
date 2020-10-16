@@ -36,6 +36,8 @@ public class NQueensII_52 {
     public void test(){
         System.out.println(totalsNQueens(8));
     }
+
+
     int cnt = 0;
     public int totalsNQueens(int n){
         int[][] board = new int[n][n];
